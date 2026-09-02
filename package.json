@@ -1,0 +1,23 @@
+{
+  "name": "agent-ops-console",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local control plane and tamper-evident audit log for bounded trading agents.",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "dev": "tsx src/cli.ts",
+    "check": "pnpm typecheck && pnpm test && pnpm build && pnpm secret:scan",
+    "secret:scan": "node scripts/scan-secrets.mjs",
+    "security:audit": "pnpm audit --audit-level high"
+  },
+  "engines": { "node": ">=22" },
+  "devDependencies": {
+    "@types/node": "26.4.0",
+    "tsx": "4.23.13",
+    "typescript": "7.0.2",
+    "vitest": "4.1.11"
+  }
+}
